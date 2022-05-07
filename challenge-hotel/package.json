@@ -1,13 +1,15 @@
 {
   "name": "sygenta",
   "version": "1.0.0",
+  "type": "module",
   "description": "A simple project with a single failing test",
   "scripts": {
-    "test": "mocha test/**/*spec.js"
+    "test": "mocha test/**/*spec.js",
+    "eslint": "index.js"
   },
   "dependencies": {
     "chai": "^4.1.2",
-    "mocha": "^4.0.1"
+    "mocha": "^10.0.0"
   },
   "main": "index.js",
   "directories": {
@@ -15,5 +17,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.15.0"
+  }
 }
