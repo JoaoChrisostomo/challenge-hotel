@@ -72,6 +72,7 @@ function hotelMaiBarato(cliente, ...data) {
 }
 console.log("Entrada 03: ");
 hotelMaiBarato("Reward", 4, 5, 7);
+module.import = hotelMaiBarato;
 
 //entrada 01 "Regular",1,2,3
 //entrada 02 "Regular",5,6,7
