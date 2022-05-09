@@ -32,39 +32,68 @@ class Hotel {
   }
 }
 
-//"Regular" -  "Reward"
+class ServiceHoteis {
+  constructor(dias, preferencia, HoteisDisponiveis, estrelas) {
+    this.dias = dias;
+    this.preferencia = preferencia;
+    this.HoteisDisponiveis = HoteisDisponiveis;
+    this.estrelas = estrelas;
+    this.HoteisBaratos = [];
+  }
 
-function hotelMaisBarato(cliente, ...data) {
-  var diasDeSemana = data.filter((dia) => dia < 6).length;
-  var finalDeSemana = data.filter((dia) => dia > 5).length;
+  getHoteisDisponiveis = () => {
+    return this.HoteisDisponiveis;
+  };
+  getHotelMaisBarato = () => {
+    const diasDeSemana = this.dias.filter((dia) => dia < 6).length;
+    const finalDeSemana = this.dias.filter((dia) => dia > 5).length;
 
-  var hotelaria = [
-    new Hotel("Lakewood", 3, [110, 80], [80, 90]),
-    new Hotel("Bridgewood", 4, [160, 110], [60, 50]),
-    new Hotel("Ridgewood", 5, [220, 100], [150, 40]),
-  ];
+    this.HoteisBaratos = this.HoteisDisponiveis.map((hotel) => {
+      hotel.totalAPagar(this.preferencia, diasDeSemana, finalDeSemana);
+      return hotel;
+    });
 
-  hotelaria.forEach((hotel) => {
-    hotel.totalAPagar(cliente, diasDeSemana, finalDeSemana);
-  });
+    this.HoteisBaratos.sort(function (a, b) {
+      if (a.total_a_pagar < b.total_a_pagar) {
+        return -1;
+      } else {
+        return true;
+      }
+    });
+    return this.HoteisBaratos[0];
+  };
 
-  hotelaria.sort(function (a, b) {
-    if (a.total_a_pagar < b.total_a_pagar) {
-      return -1;
-    } else {
-      return true;
-    }
-  });
+  getListHoteisBaratos = () => {
+    return this.HoteisBaratos;
+  };
+  getHotelMaisBaratoEstrelas = () => {
+    const diasDeSemana = this.dias.filter((dia) => dia < 6).length;
+    const finalDeSemana = this.dias.filter((dia) => dia > 5).length;
+    this.HoteisBaratos = this.HoteisDisponiveis.map((hotel) => {
+      hotel.totalAPagar(this.preferencia, diasDeSemana, finalDeSemana);
+      return hotel;
+    });
 
-  // console.log(hotelaria);
-
-  console.log(hotelaria[0].hotelVencedor);
-  console.log(hotelaria[0].reservar);
+    this.HoteisBaratos.sort(function (a, b) {
+      if (a.total_a_pagar < b.total_a_pagar) {
+        return -1;
+      } else {
+        return true;
+      }
+    });
+    return this.HoteisBaratos.find(
+      (hotel) => hotel.classificacaoHotel == this.estrelas
+    );
+  };
 }
-console.log("Entrada 03: ");
-hotelMaisBarato("Reward", 4, 5, 7);
-// module.export = hotelMaisBarato;
 
+module.exports = {
+  Hotel,
+  ServiceHoteis,
+};
+/* console.log("Entrada 03: ");
+const service = new ServiceHoteis([4, 5, 7], "Reward", hotelaria, 4);
+console.log(service.HotelMaisBarato()); */
 //entrada 01 "Regular",1,2,3
 //entrada 02 "Regular",5,6,7
 //entrada 03 "Reward",4,5,7
