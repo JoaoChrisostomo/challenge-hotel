@@ -1,12 +1,3 @@
-// const hoteis = ["Lakewood", "Bridgewood", "Ridgewood"]
-// const classificaoDoHotel = [3, 4, 5]
-
-// function getCheapestHotel (input) { //DO NOT change the function's name.
-//     return "Cheapest hotel name"
-// }
-
-// exports.getCheapestHotel = getCheapestHotel
-
 class Hotel {
   constructor(nomeHotel, classificacaoHotel, taxaDiaUtil, finalDeSemana) {
     this.nomeHotel = nomeHotel;
@@ -43,7 +34,7 @@ class Hotel {
 
 //"Regular" -  "Reward"
 
-function hotelMaiBarato(cliente, ...data) {
+function hotelMaisBarato(cliente, ...data) {
   var diasDeSemana = data.filter((dia) => dia < 6).length;
   var finalDeSemana = data.filter((dia) => dia > 5).length;
 
@@ -71,8 +62,8 @@ function hotelMaiBarato(cliente, ...data) {
   console.log(hotelaria[0].reservar);
 }
 console.log("Entrada 03: ");
-hotelMaiBarato("Reward", 4, 5, 7);
-module.import = hotelMaiBarato;
+hotelMaisBarato("Reward", 4, 5, 7);
+module.exports = hotelMaisBarato;
 
 //entrada 01 "Regular",1,2,3
 //entrada 02 "Regular",5,6,7

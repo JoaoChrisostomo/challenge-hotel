@@ -4,8 +4,7 @@
   "type": "module",
   "description": "A simple project with a single failing test",
   "scripts": {
-    "test": "mocha test/**/*spec.js",
-    "jest": "jest --init"
+    "test": "jest --coverage"
   },
   "dependencies": {
     "chai": "^4.1.2",
